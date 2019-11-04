@@ -14,12 +14,12 @@
 	var table; 
 
 	$("#name-filter").change(function(){
-			table.setFilter("name", "=", $("#name-filter").val())
+			table.setFilter("city", "=", $("#name-filter").val())
 			console.log($("#name-filter").val())
 	});
 
 
-	$.getJSON("https://spreadsheets.google.com/feeds/list/18mYBuMIM6w9QrlLLel42eiZu5PfyPQpiJeQ4aOd9-B4/od6/public/full?alt=json", function(data) {
+	$.getJSON("https://spreadsheets.google.com/feeds/list/1tNLdCdghDeiNpOEh5Kk5cSBjYN0NZnocYG2m-hZIwfU/od6/public/full?alt=json", function(data) {
 			console.log(data); 
 			var tableData = [];
 
@@ -29,9 +29,14 @@
 				console.log(entry); 
 				var tableEntry = {
 					id : id,
-					name : entry.gsx$name.$t, 
-					age : entry.gsx$age.$t,
-					coolness: entry.gsx$coolness.$t
+					city : entry.gsx$city.$t, 
+					leader : entry.gsx$leader.$t,
+					party: entry.gsx$party.$t,
+					phone: entry.gsx$phone.$t,
+					email: entry.gsx$emailaddress.$t,
+					twitter: entry.gsx$twitter.$t,
+					onlinemessaging: entry.gsx$onlinemessaging.$t,
+					targets: entry.gsx$ghgtargets.$t,
 				};
 				tableData.push(tableEntry); 
 			}
@@ -44,14 +49,19 @@
 			 	data:tableData, //assign data to table
 			 	layout:"fitColumns", //fit columns to width of table (optional)
 			 	columns:[ //Define Table Columns
-				 	{title:"Name", field:"name", width:150},
-				 	{title:"Age", field:"age", align:"left"},
-				 	{title:"Coolness", field:"coolness", align:"left"},
+				 	{title:"City", field:"city", width:150},
+				 	{title:"Leader", field:"leader", align:"left"},
+				 	{title:"Party", field:"party", align:"left"},
+				 	{title:"Phone", field:"phone", align:"left"},
+				 	{title:"Email", field:"email", align:"left"},
+				 	{title:"Twitter", field:"twitter", align:"left"},
+				 	{title:"Online Messaging", field:"onelinemessaging", align:"left"},
+				 	{title:"Climate Targets", field:"targets", align:"left"},
 
 			 	],
-			 	rowClick:function(e, row){ //trigger an alert message when the row is clicked
-			 		alert("Row " + row.getData().id + " Clicked!!!!");
-			 	},
+			 	//rowClick:function(e, row){ //trigger an alert message when the row is clicked
+			 		//alert("Row " + row.getData().id + " Clicked!!!!");
+			 	//},
 			});
 	});
 
