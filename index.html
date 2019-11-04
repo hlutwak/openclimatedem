@@ -30,7 +30,8 @@
 				var tableEntry = {
 					id : id,
 					name : entry.gsx$name.$t, 
-					age : entry.gsx$age.$t
+					age : entry.gsx$age.$t,
+					coolness: entry.gsx$coolness.$t
 				};
 				tableData.push(tableEntry); 
 			}
@@ -45,6 +46,7 @@
 			 	columns:[ //Define Table Columns
 				 	{title:"Name", field:"name", width:150},
 				 	{title:"Age", field:"age", align:"left"},
+				 	{title:"Coolness", field:"coolness", align:"left"},
 
 			 	],
 			 	rowClick:function(e, row){ //trigger an alert message when the row is clicked
