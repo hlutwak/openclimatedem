@@ -38,7 +38,7 @@
 					twitter: entry.gsx$twitter.$t,
 					onlinemessaging: entry.gsx$onlinemessaging.$t,
 					targets: entry.gsx$ghgtargets.$t,
-					progress: entry.gsx$ghgtargets.$t,
+					progress: entry.gsx$progress.$t,
 				};
 				tableData.push(tableEntry); 
 			}
@@ -54,7 +54,7 @@
 			 	responsiveLayoutCollapseStartOpen:false,
 			 	columns:[ //Define Table Columns
 			 	{formatter: "responsiveCollapse", width: 30, minWidth:30, align: "center", resizeable: false, headerSort:false},
-				 	{title:"Location", field:"city", width:150, responsive:0, formatter:"textarea", widthGrow:1},
+				 	{title:"Location", field:"city", width:200, responsive:0, formatter:"textarea", widthGrow:1},
 				 	{title:"Leader", field:"leader", align:"left"},
 				 	{title:"Party", field:"party", align:"left"},
 				 	{title:"Phone", field:"phone", align:"left"},
