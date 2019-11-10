@@ -13,7 +13,7 @@
 <script> 
 	var table; 
 
-	$("#name-filter").change(function(){
+	$("#name-filter").keydown(function(){
 			table.setFilter("city", "=", $("#name-filter").val())
 			console.log($("#name-filter").val())
 	});
