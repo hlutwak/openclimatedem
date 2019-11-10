@@ -13,8 +13,8 @@
 <script> 
 	var table; 
 
-	$("#name-filter").keydown(function(){
-			table.setFilter("city", "=", $("#name-filter").val())
+	$("#name-filter").change(function(){
+			table.setFilter("city", "like", $("#name-filter").val())
 			console.log($("#name-filter").val())
 	});
 
