@@ -60,7 +60,9 @@
 				 	{title:"Phone", field:"phone", align:"left"},
 				 	{title:"Email", field:"email", align:"left"},
 				 	{title:"Twitter", field:"twitter", align:"left"},
-				 	{title:"Online Messaging", field:"onelinemessaging", align:"left"},
+				 	{title:"Online Messaging", field:"onelinemessaging", align:"left", formatter:"link", formatterParams:{
+				 		target:"_blank",
+				 	}},
 				 	{title:"Climate Targets", field:"targets", align:"left", minWidth:2000},
 				 	{title:"Progress", field:"progress", align:"left", formatter:"progress", formatterParams:{
 				 		color:["red", "orange", "green"]}},
