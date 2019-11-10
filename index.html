@@ -38,7 +38,7 @@
 					twitter: entry.gsx$twitter.$t,
 					onlinemessaging: entry.gsx$onlinemessaging.$t,
 					targets: entry.gsx$ghgtargets.$t,
-					progress: parseInt(entry.gsx$progress.$t),
+					progress: Number(entry.gsx$progress.$t),
 				};
 				tableData.push(tableEntry); 
 			}
