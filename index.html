@@ -58,7 +58,9 @@
 				 	{title:"Leader", field:"leader", align:"left"},
 				 	{title:"Party", field:"party", align:"left"},
 				 	{title:"Phone", field:"phone", align:"left"},
-				 	{title:"Email", field:"email", align:"left"},
+				 	{title:"Email", field:"email", align:"left", formatter:"link", formatterParams:{
+				 		urlPrefix:"mailto://",
+				 	}},
 				 	{title:"Twitter", field:"twitter", align:"left"},
 				 	{title:"Online Messaging", field:"onlinemessaging", align:"left", formatter:"link", formatterParams:{
 				 		labelField:"onlinemessaging",
