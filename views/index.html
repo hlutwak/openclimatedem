@@ -1,0 +1,82 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<link href="https://unpkg.com/tabulator-tables@4.1.4/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
+
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.4/dist/js/tabulator.min.js"></script>
+
+
+<input id="name-filter" type="text">	</input>
+<div id="example-table"></div>
+
+
+
+
+<script> 
+	var table; 
+
+	$("#name-filter").keydown(function(){
+			table.setFilter("location", "like", $("#name-filter").val())
+			console.log($("#name-filter").val())
+	});
+
+
+	$.getJSON("https://spreadsheets.google.com/feeds/list/1tNLdCdghDeiNpOEh5Kk5cSBjYN0NZnocYG2m-hZIwfU/od6/public/full?alt=json", function(data) {
+			console.log(data); 
+			var tableData = [];
+
+			// Change data format from Google Sheets ---> Tabulator format 
+			for (id in data.feed.entry) {
+			    var entry = data.feed.entry[id] 
+				console.log(entry); 
+				var tableEntry = {
+					id : id,
+					location : entry.gsx$location.$t, 
+					leader : entry.gsx$leader.$t,
+					party: entry.gsx$party.$t,
+					phone: entry.gsx$phone.$t,
+					email: entry.gsx$emailaddress.$t,
+					twitter: entry.gsx$twitter.$t,
+					onlinemessaging: entry.gsx$onlinemessaging.$t,
+					targets: entry.gsx$ghgtargets.$t,
+					progress: entry.gsx$progress.$t,
+				};
+				tableData.push(tableEntry); 
+			}
+			console.log(tableData); 
+
+
+						//create Tabulator on DOM element with id "example-table"
+			table = new Tabulator("#example-table", {
+			 	height:"100%", // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+			 	data:tableData, //assign data to table
+			 	layout:"fitColumns", //fit columns to width of table (optional)
+			 	responsiveLayout: "collapse",
+			 	responsiveLayoutCollapseStartOpen:false,
+			 	columns:[ //Define Table Columns
+			 	{formatter: "responsiveCollapse", width: 30, minWidth:30, align: "center", resizeable: false, headerSort:false},
+				 	{title:"Location", field:"location", width:200, responsive:0, formatter:"textarea", widthGrow:1},
+				 	{title:"Leader", field:"leader", align:"left"},
+				 	{title:"Party", field:"party", align:"left"},
+				 	{title:"Phone", field:"phone", align:"left"},
+				 	{title:"Email", field:"email", align:"left", formatter:"link", formatterParams:{
+				 		urlPrefix:"mailto:",
+				 		target:"_blank",
+				 	}},
+				 	{title:"Twitter", field:"twitter", align:"left"},
+				 	{title:"Online Messaging", field:"onlinemessaging", align:"left", formatter:"link", formatterParams:{
+				 		labelField:"onlinemessaging",
+				 		urlField:"onlinemessaging",
+				 		target:"_blank",
+				 	}},
+				 	{title:"Climate Targets", field:"targets", align:"left", minWidth:2000},
+				 	{title:"Progress", field:"progress", align:"left", formatter:"progress", formatterParams:{
+				 		color:["red", "orange", "green"]}},
+
+			 	],
+			 	//rowClick:function(e, row){ //trigger an alert message when the row is clicked
+			 		//alert("Row " + row.getData().id + " Clicked!!!!");
+			 	//},
+			});
+	});
+
+</script>
