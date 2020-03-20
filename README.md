@@ -1,4 +1,3 @@
 # openclimatedem
-database for open climate democracy
-stuff to make the website
-playing around with branches
+Searching for persons in charge for open climate democracy
+Tools: nodejs + mongodb
