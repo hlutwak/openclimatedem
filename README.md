@@ -1,3 +1,4 @@
 # openclimatedem
-Searching for persons in charge for open climate democracy \n
+Searching for persons in charge for open climate democracy
+
 Tools: nodejs + mongodb
