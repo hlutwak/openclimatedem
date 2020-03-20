@@ -6,7 +6,7 @@ const contactController = require("../controllers/contactController.js");
 // router.param('id', tourController.checkID);
 
 router
-  .route("/:zipCode")
-  .get(contactController.getContactsByZipCode)
+  .route("/")
+  .post(contactController.getContactsByZipCode)
 
 module.exports = router;
